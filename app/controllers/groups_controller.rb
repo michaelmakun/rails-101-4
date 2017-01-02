@@ -58,7 +58,7 @@ class GroupsController < ApplicationController
       flash[:warning] = "You've already the member of Group"
     end
 
-    redirect_to group_path(@group)
+    redirect_to groups_path(@group)
 
   end
 
@@ -72,7 +72,7 @@ class GroupsController < ApplicationController
       flash[:warning] = "You are not the member."
     end
 
-    redirect_to group_path(@group)
+    redirect_to groups_path(@group)
 
   end
 

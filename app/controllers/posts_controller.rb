@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:new, :create]
-  before_filter :set_PostGroup_and_check_permission, :only => [:create, :edit, :update, :destroy]
+  before_filter :set_PostGroup_and_check_permission, :only => [:edit, :update, :destroy]
 
   def new
     @group = Group.find(params[:group_id])
@@ -48,8 +48,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if current_user != @post.user
-        redirect_to root_path, alert: "You have no permission."
+      redirect_to root_path, alert: "You have no permission."
     end
+
+
   end
 
   def post_params
